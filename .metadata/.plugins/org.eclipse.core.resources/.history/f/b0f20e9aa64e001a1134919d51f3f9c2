@@ -1,0 +1,9 @@
+package com.example.demo;
+
+public class CellPhone {
+	private int mobileId;
+	private int number;
+	private String brandName;
+	
+	
+}

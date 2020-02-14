@@ -1,0 +1,6 @@
+package com.example.demo;
+
+public class Car {
+	private int carId;
+	private String brandName;
+}

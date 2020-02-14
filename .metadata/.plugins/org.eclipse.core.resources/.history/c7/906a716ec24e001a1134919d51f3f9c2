@@ -1,0 +1,43 @@
+package com.example.demo;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class HomeController {
+	
+	/*
+	Calling home.jsp page from here
+	Internally there is a request_dispatcher service
+	  @RequestMapping("home")
+	  @ResponseBody
+	  public String home(HttpServletRequest req, HttpServletResponse res) {
+		
+		Session is for setting a value in session
+		and using in other files or jsp pages
+		HttpSession session = req.getSession();
+		String name = req.getParameter("name");
+		session.setAttribute("name", name);
+		System.out.println("In Home Method, name found "+name);
+		return "home";
+	}
+	*/  
+	
+	//Simplify Code
+	@RequestMapping("home")
+	public String home(@RequestParam("name ")String myName, HttpSession session) {
+		
+		//name is data or model
+		session.setAttribute("name", myName);
+		System.out.println("In Home Method, name found "+myName);
+		//Here runs the dispatcher servlet
+		//home is view
+		return "home";
+	}  
+}

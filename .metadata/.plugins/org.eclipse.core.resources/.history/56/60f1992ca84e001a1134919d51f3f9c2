@@ -1,0 +1,83 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+/*
+ * Default Scope: Singleton
+ *Create multiple instances
+@Scope(value = "prototype")
+*/
+public class Person {
+	private int id;
+	private String name;
+	private String specialization;
+	@Autowired
+	@Qualifier("myCar")
+	private Car car;
+	@Autowired
+	private CellPhone cellPhone;
+	
+	public CellPhone getCellPhone() {
+		return cellPhone;
+	}
+
+	public void setCellPhone(CellPhone cellPhone) {
+		this.cellPhone = cellPhone;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
+	//Constructor
+	public Person(){
+		System.out.println("Creating Person Object");
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getSpecialization() {
+		return specialization;
+	}
+
+
+	public void setSpecialization(String specialization) {
+		this.specialization = specialization;
+	}
+
+
+	public void showName() {
+		System.out.println("In showName Car class method called in Person class");
+		car.carRun();
+	}
+	
+	public void callPhone() {
+		System.out.println("In callPhone CellPhone class method called in Person class");
+		cellPhone.callSomeone();
+	}
+}

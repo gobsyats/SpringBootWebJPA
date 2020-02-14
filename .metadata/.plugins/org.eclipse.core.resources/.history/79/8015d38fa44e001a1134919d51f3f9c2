@@ -1,0 +1,42 @@
+package com.example.demo;
+
+@Component
+public class Person {
+	private int id;
+	private String name;
+	private String specialization;
+	
+	Person(int id, String name, String specialization){
+		this.id = id;
+		this.name = name;
+		this.specialization = specialization;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	public String getName() {
+		return this.getName();
+	}
+	
+	public String getSpecialization() {
+		return this.getSpecialization();
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setSpecialization(String specialization) {
+		this.specialization = specialization;
+	}
+	
+	public void showName() {
+		System.out.println("Name is "+this.getName());
+	}
+}

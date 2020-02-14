@@ -1,0 +1,66 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.demo.dao.AlienRepo;
+import com.example.demo.model.Alien;
+
+@Controller
+public class AlienController {
+
+	@Autowired
+	AlienRepo repo;
+	
+	@RequestMapping("/")
+	public String home() {
+		return "home.jsp";
+	}
+	
+	@RequestMapping("/addAlien")
+	public String addAlien(Alien alien) {
+		repo.save(alien);
+		return "home.jsp";
+	}
+	
+	/*
+	@RequestMapping("/getAlien")
+	public ModelAndView getAlien(@RequestParam int aid) {
+		ModelAndView mv = new ModelAndView("showAlien.jsp");
+		Alien alien = repo.findById(aid).orElse(new Alien());
+		//mv.setViewName("showAlien");
+		System.out.println("JAVA tech experts");
+		System.out.println(repo.findByTech("JAVA"));
+		System.out.println("Emp with ids greater than 102");
+		System.out.println(repo.findByAidGreaterThan(102));
+		System.out.println("Emp with ids less than 104");
+		System.out.println(repo.findByAidLessThan(104));
+		System.out.println("sorted by tech");
+		System.out.println(repo.findByTechSorted("JAVA"));
+		mv.addObject(alien);
+		return mv;
+	}
+	*/
+	
+	//Rest service - fetch all aliens
+	@RequestMapping("/aliens")
+	@ResponseBody //Tell dispatcher service that
+	//the returning type is data
+	public String getAliens() {
+		return repo.findAll().toString();
+	}
+	
+	//Rest service
+		@RequestMapping("/aliens")
+		@ResponseBody //Tell dispatcher service that
+		//the returning type is data
+		public String getAliens() {
+			return repo.findAll().toString();
+		}
+	
+	
+}
