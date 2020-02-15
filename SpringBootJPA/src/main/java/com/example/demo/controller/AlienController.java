@@ -90,7 +90,7 @@ public class AlienController {
 		return "Alien deleted";
 	}
 	
-	//Rest service - delete specific alien
+	//Rest service - Edit specific alien
 	@PutMapping(path="/alien", consumes= {"application/json"})
 	public Alien saveOrUpdateAlien(@RequestBody Alien alien) {
 			repo.save(alien);
